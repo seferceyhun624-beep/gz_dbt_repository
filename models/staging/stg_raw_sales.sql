@@ -12,7 +12,8 @@ renamed as (
     orders_id,
     pdt_id as products_id,
     revenue,
-    quantity
+    quantity,
+    concat(cast(orders_id as string), '-', cast(pdt_id as string)) as sales_pk
   from source
 
 )

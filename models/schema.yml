@@ -1,11 +1,11 @@
 version: 2
 
 sources:
-  - name: raw
-    database: gen-lang-client-0099843416
-    schema: gz_raw_data
-    description: "Raw datasets ingested from source systems"
-    tables:
+ - name: raw
+   database: gen-lang-client-0099843416
+   schema: gz_raw_data
+   description: "Raw datasets ingested from source systems"
+   tables:
       - name: sales
         identifier: raw_gz_sales
         description: "Raw sales transactions data"
@@ -29,21 +29,47 @@ sources:
         identifier: raw_gz_product
         description: "Raw product master data"
         columns:
-          - name: pdt_id
+          - name: products_id
             description: "Unique identifier of the product"
+            tests:
+             - not_null
+             - unique
 
-          - name: purchse_price
-            description: "Purchase price of the product (raw value)"
+      - name: purchSE_PRICE
+        description: "Purchase price in raw source (needs cleaning/casting)"
 
       - name: ship
         identifier: raw_gz_ship
         description: "Raw shipping information per order"
         columns:
+          - name: orders_id
+            description: "Unique identifier of the order"
+            tests:
+             - not_null
+             - unique
+            
           - name: shipping_fee
             description: "Shipping fee charged for the order"
 
           - name: shipping_fee_1
             description: "Duplicate shipping fee field from alternative source"
+
+          - name: logCost
+            description: "Raw logistics cost (needs cleaning/casting)"
+
+          - name: ship_cost
+            description: "Raw shipping cost as string (needs cleaning/casting)"
+
+models:
+  - name: stg_raw_sales
+    columns:
+      - name: sales_pk
+        description: "Surrogate primary key for sales lines (orders_id + product id)"
+        tests:
+          - not_null
+          - unique
+
+
 
 
 
