@@ -19,6 +19,14 @@ ship as (
 select
     o.orders_id,
     o.date_date,
+    o.revenue,
+    o.quantity,
+    o.purchase_cost,
+    o.margin,
+
+    s.shipping_fee,
+    s.log_cost,
+    s.ship_cost,
 
     o.margin
         + s.shipping_fee
