@@ -155,7 +155,7 @@ models:
   - name: int_campaigns_day
     description: "Daily aggregated campaign performance"
     columns:
-      - name: date
+      - name: date_date
         tests:
           - not_null
 
