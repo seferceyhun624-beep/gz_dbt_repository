@@ -8,15 +8,87 @@ sources:
    tables:
       - name: adwords
         identifier: raw_gz_adwords
+        description: "Google Ads (AdWords) daily campaign performance raw data."
+        columns:
+          - name: date_date
+            description: "Date of the metrics."
+            tests: [not_null]
+          - name: paid_source
+            description: "Source label (should be 'adwords' in this raw table)."
+          - name: campaign_key
+            description: "Campaign unique identifier."
+            tests: [not_null]
+          - name: campaign_name
+            description: "Campaign name."
+          - name: ads_cost
+            description: "Ad spend / cost."
+          - name: impression
+            description: "Number of impressions."
+          - name: click
+            description: "Number of clicks."
 
       - name: bing
         identifier: raw_gz_bing
+        description: "Bing Ads daily campaign performance raw data."
+        columns:
+          - name: date_date
+            description: "Date of the metrics."
+            tests: [not_null]
+          - name: paid_source
+            description: "Source label (should be 'bing' in this raw table)."
+          - name: campaign_key
+            description: "Campaign unique identifier."
+            tests: [not_null]
+          - name: campaign_name
+            description: "Campaign name."
+          - name: ads_cost
+            description: "Ad spend / cost."
+          - name: impression
+            description: "Number of impressions."
+          - name: click
+            description: "Number of clicks."
 
       - name: criteo
         identifier: raw_gz_criteo
+        description: "Criteo daily campaign performance raw data."
+        columns:
+          - name: date_date
+            description: "Date of the metrics."
+            tests: [not_null]
+          - name: paid_source
+            description: "Source label (should be 'criteo' in this raw table)."
+          - name: campaign_key
+            description: "Campaign unique identifier."
+            tests: [not_null]
+          - name: campaign_name
+            description: "Campaign name."
+          - name: ads_cost
+            description: "Ad spend / cost."
+          - name: impression
+            description: "Number of impressions."
+          - name: click
+            description: "Number of clicks."
 
       - name: facebook
         identifier: raw_gz_facebook
+        description: "Facebook Ads daily campaign performance raw data."
+        columns:
+          - name: date_date
+            description: "Date of the metrics."
+            tests: [not_null]
+          - name: paid_source
+            description: "Source label (should be 'facebook' in this raw table)."
+          - name: campaign_key
+            description: "Campaign unique identifier."
+            tests: [not_null]
+          - name: campaign_name
+            description: "Campaign name."
+          - name: ads_cost
+            description: "Ad spend / cost."
+          - name: impression
+            description: "Number of impressions."
+          - name: click
+            description: "Number of clicks."
 
       - name: sales
         identifier: raw_gz_sales
@@ -80,7 +152,19 @@ models:
         tests:
           - not_null
           - unique
+  - name: int_campaigns_day
+    description: "Daily aggregated campaign performance"
+    columns:
+      - name: date
+        tests:
+          - not_null
 
+  - name: finance_campaigns_day
+    description: "Finance mart combining campaigns and operational metrics"
+    columns:
+      - name: date
+        tests:
+          - not_null
 
 
 
